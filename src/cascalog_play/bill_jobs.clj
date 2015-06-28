@@ -2,11 +2,15 @@
   (:use cascalog.api)
   (:require [cheshire.core :as ch]
             [cascalog.logic.ops :as c]
+            [cascalog.logic.def :as def]
             [cascalog.logic.vars :as v]))
 
 
 (defn parse-json [json]
   (map (ch/parse-string json true) [:bill_id :bill_type :congress :introduced_at :updated_at :sponsor :official_title :status :subjects_top_term]))
+
+(defn parse-json-with [json fields]
+  (map (ch/parse-string json true) fields))
 
 (defn get-nested-field [fields map]
   (mapv #(% map) fields))
@@ -34,3 +38,21 @@
         (text-tap ?line)
         (parse-json ?line :> ?bill-id ?bill-type ?congress ?introduced-date ?updated_at ?sponsor ?official_title ?status ?subjects_top_term)
         (get-nested-field [:name :thomas_id] ?sponsor  :> ?sponsor_name ?sponsor_thomas_id))))
+
+(defn retrieve-bill-summaries-at [dir type]
+  (let [text-tap (file-textline dir type)]
+    (<- [?bill_id ?summary_text]
+        (text-tap ?line)
+        (parse-json-with ?line [:bill_id :summary] :> ?bill_id ?summary)
+        (get-nested-field [:text] ?summary :> ?summary_text))))
+
+(defmapcatop gen [sentence]
+             (mapv identity sentence))
+
+(defn retrieve-bill-subject-terms-at [dir type]
+  (let [text-tap (file-textline dir type)]
+    (<- [?bill_id ?term]
+        (text-tap ?line)
+        (parse-json-with ?line [:bill_id :subjects] :> ?bill_id ?subjects)
+        (gen ?subjects :> ?term))))
+

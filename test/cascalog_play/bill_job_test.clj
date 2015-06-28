@@ -3,7 +3,7 @@
   (:use midje.cascalog)
   (:require [cascalog-play.bill-jobs :as jobs]))
 
-(facts "Given a bills directory, When specifying the type return only those bills"
+(facts "Given a bills directory, When specifying the bill type (e.g :sres for senate resolution), Then return only those bills"
   (jobs/retrieve-bills-at "dev-resources/bills/" :sres) => (produces [["sres9-114" "sres" "114" "2015-01-06" "2015-06-27T07:13:36-04:00"
                                                                       "McConnell, Mitch" "01395"
                                                                       "A resolution notifying the President of the United States of the election of the Secretary of the Senate."
@@ -57,3 +57,23 @@
                                                                            "To establish a corporate crime database, and for other purposes."
                                                                            "REFERRED"
                                                                            "Crime and law enforcement"]]))
+
+(facts "Given a bills directory and a bill type, Then retrieve all bill summaries for that type"
+  (jobs/retrieve-bill-summaries-at "dev-resources/bills/" :s) => (produces [["s610-114"
+                                                                             "Thurgood Marshall's Elementary School Study Act\n\nThe Department of the Interior must conduct a special resource study of P.S. 103, the public school located in West Baltimore, Maryland, which former Supreme Court Justice Thurgood Marshall attended as a youth. The study must also include any other resources in the surrounding neighborhood that relate to his early life."]])
+
+  (jobs/retrieve-bill-summaries-at "dev-resources/bills/" :all) => (produces-some [["s610-114"
+                                                                             "Thurgood Marshall's Elementary School Study Act\n\nThe Department of the Interior must conduct a special resource study of P.S. 103, the public school located in West Baltimore, Maryland, which former Supreme Court Justice Thurgood Marshall attended as a youth. The study must also include any other resources in the surrounding neighborhood that relate to his early life."]]))
+
+
+(facts "Given a bill bills directory and a bill type, Then retrieve all bills and subsequent subjects"
+  (jobs/retrieve-bill-subject-terms-at "dev-resources/bills/" :s) => (produces [["s610-114" "Congressional oversight"]
+                                                                                 ["s610-114" "Educational facilities and institutions"]
+                                                                                 ["s610-114" "Elementary and secondary education"]
+                                                                                 ["s610-114" "Government studies and investigations"]
+                                                                                 ["s610-114" "Historic sites and heritage areas"]
+                                                                                 ["s610-114" "Judges"]
+                                                                                 ["s610-114" "Maryland"]
+                                                                                 ["s610-114" "Parks, recreation areas, trails"]
+                                                                                 ["s610-114" "Public lands and natural resources"]
+                                                                                 ["s610-114" "Supreme Court"]]))
