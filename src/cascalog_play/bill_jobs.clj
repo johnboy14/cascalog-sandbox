@@ -46,13 +46,10 @@
         (parse-json-with ?line [:bill_id :summary] :> ?bill_id ?summary)
         (get-nested-field [:text] ?summary :> ?summary_text))))
 
-(defmapcatop gen [sentence]
-             (mapv identity sentence))
-
 (defn retrieve-bill-subject-terms-at [dir type]
   (let [text-tap (file-textline dir type)]
     (<- [?bill_id ?term]
         (text-tap ?line)
         (parse-json-with ?line [:bill_id :subjects] :> ?bill_id ?subjects)
-        (gen ?subjects :> ?term))))
+        ((mapcatop identity) ?subjects :> ?term))))
 
