@@ -14,8 +14,14 @@
 (defn get-file-pattern-by-type [type]
   (case type
     (:hr)  "*_hr_*data1.json"
+    (:hres) "*_hres_*data1.json"
+    (:hjres) "*_hjres_*data1.json"
+    (:hconres) "*_hconres_*data1.json"
     (:sres) "*_sres_*data1.json"
-    :default "*data1.json"))
+    (:sjres) "*_sjres_*data1.json"
+    (:sconres) "*_sconres_*data1.json"
+    (:s) "*_s_*data1.json"
+    "*data1.json"))
 
 (defn file-textline [dir pattern]
   (let [source (lfs-textline dir :source-pattern (get-file-pattern-by-type pattern))]
