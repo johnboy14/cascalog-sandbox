@@ -53,3 +53,18 @@
         (parse-json-with ?line [:bill_id :subjects] :> ?bill_id ?subjects)
         ((mapcatop identity) ?subjects :> ?term))))
 
+(defn retrieve-bill-cosponsor-relationships-at [dir type]
+  (let [text-tap (file-textline dir type)]
+    (<- [?bill_id ?name ?sponsored_at ?state ?thomas_id]
+        (text-tap ?line)
+        (parse-json-with ?line [:bill_id :cosponsors] :> ?bill_id ?cosponsors)
+        ((mapcatop identity) ?cosponsors :> ?sponsor)
+        (get-nested-field [:name :sponsored_at :state :thomas_id] ?sponsor :> ?name ?sponsored_at ?state ?thomas_id))))
+
+(defn retrieve-bill-actions-at [dir type]
+  (let [text-tap (file-textline dir type)]
+    (<- [?bill_id ?acted_at ?text]
+        (text-tap ?line)
+        (parse-json-with ?line [:bill_id :actions] :> ?bill_id ?actions)
+        ((mapcatop identity) ?actions :> ?action)
+        (get-nested-field [:acted_at :text] ?action :> ?acted_at ?text))))

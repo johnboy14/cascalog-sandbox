@@ -66,7 +66,7 @@
                                                                              "Thurgood Marshall's Elementary School Study Act\n\nThe Department of the Interior must conduct a special resource study of P.S. 103, the public school located in West Baltimore, Maryland, which former Supreme Court Justice Thurgood Marshall attended as a youth. The study must also include any other resources in the surrounding neighborhood that relate to his early life."]]))
 
 
-(facts "Given a bill bills directory and a bill type, Then retrieve all bills and subsequent subjects"
+(facts "Given a bills directory and a bill type, Then retrieve all bills and subsequent subjects"
   (jobs/retrieve-bill-subject-terms-at "dev-resources/bills/" :s) => (produces [["s610-114" "Congressional oversight"]
                                                                                  ["s610-114" "Educational facilities and institutions"]
                                                                                  ["s610-114" "Elementary and secondary education"]
@@ -77,3 +77,21 @@
                                                                                  ["s610-114" "Parks, recreation areas, trails"]
                                                                                  ["s610-114" "Public lands and natural resources"]
                                                                                  ["s610-114" "Supreme Court"]]))
+
+(fact "Given a bills directory and a bill type, retrieve all bill and co-sponsor relationships"
+  (jobs/retrieve-bill-cosponsor-relationships-at "dev-resources/bills/" :hjres) => (produces [["hjres10-114" "Becerra, Xavier" "2015-01-07" "CA" "00070"]
+                                                                                             ["hjres10-114" "Cole, Tom" "2015-01-07" "OK" "01742"]]))
+
+(fact "Given a bills directory and a bill type, retrieve all bill actions"
+  (jobs/retrieve-bill-actions-at "dev-resources/bills/" :hjres) => (produces [["hjres10-114" "2015-01-07" "Referred to the House Committee on House Administration."]
+                                                                              ["hjres10-114" "2015-03-26T12:29:00-04:00" "Mr. Davis, Rodney asked unanimous consent to discharge from committee and consider."]
+                                                                              ["hjres10-114" "2015-03-26T12:29:00-04:00" "Committee on House Administration discharged."]
+                                                                              ["hjres10-114" "2015-03-26T12:29:00-04:00" "Considered by unanimous consent."]
+                                                                              ["hjres10-114" "2015-03-26T12:30:00-04:00" "On passage Passed without objection."]
+                                                                              ["hjres10-114" "2015-03-26T12:30:00-04:00" "Motion to reconsider laid on the table Agreed to without objection."]
+                                                                              ["hjres10-114" "2015-03-26" "Received in the Senate, read twice."]
+                                                                              ["hjres10-114" "2015-03-27" "Passed Senate without amendment by Unanimous Consent."]
+                                                                              ["hjres10-114" "2015-03-27" "Message on Senate action sent to the House."]
+                                                                              ["hjres10-114" "2015-04-01" "Presented to President."]
+                                                                              ["hjres10-114" "2015-04-07" "Signed by President."]
+                                                                              ["hjres10-114" "2015-04-07" "Became Public Law No: 114-9."]]))
