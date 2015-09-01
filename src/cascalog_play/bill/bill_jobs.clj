@@ -1,4 +1,4 @@
-(ns cascalog-play.bill-jobs
+(ns cascalog-play.bill.bill-jobs
   (:use cascalog.api)
   (:require [cheshire.core :as ch]
             [cascalog.logic.ops :as c]

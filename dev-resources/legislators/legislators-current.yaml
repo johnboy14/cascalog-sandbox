@@ -1,0 +1,348 @@
+- id:
+    bioguide: B000944
+    thomas: '00136'
+    lis: S307
+    govtrack: 400050
+    opensecrets: N00003535
+    votesmart: 27018
+    fec:
+    - H2OH13033
+    - S6OH00163
+    cspan: 5051
+    wikipedia: Sherrod Brown
+    house_history: 9996
+    ballotpedia: Sherrod Brown
+    maplight: 168
+    washington_post: gIQA3O2w9O
+    icpsr: 29389
+  name:
+    first: Sherrod
+    last: Brown
+    official_full: Sherrod Brown
+  bio:
+    birthday: '1952-11-09'
+    gender: M
+    religion: Lutheran
+  terms:
+  - type: rep
+    start: '1993-01-05'
+    end: '1994-12-01'
+    state: OH
+    district: 13
+    party: Democrat
+  - type: rep
+    start: '1995-01-04'
+    end: '1996-10-04'
+    state: OH
+    district: 13
+    party: Democrat
+  - type: rep
+    start: '1997-01-07'
+    end: '1998-12-19'
+    state: OH
+    district: 13
+    party: Democrat
+  - type: rep
+    start: '1999-01-06'
+    end: '2000-12-15'
+    state: OH
+    district: 13
+    party: Democrat
+  - type: rep
+    start: '2001-01-03'
+    end: '2002-11-22'
+    state: OH
+    district: 13
+    party: Democrat
+  - type: rep
+    start: '2003-01-07'
+    end: '2004-12-09'
+    state: OH
+    district: 13
+    party: Democrat
+    url: http://www.house.gov/sherrodbrown
+  - type: rep
+    start: '2005-01-04'
+    end: '2006-12-09'
+    state: OH
+    district: 13
+    party: Democrat
+    url: http://www.house.gov/sherrodbrown
+  - type: sen
+    start: '2007-01-04'
+    end: '2013-01-03'
+    state: OH
+    class: 1
+    party: Democrat
+    url: http://brown.senate.gov/
+    address: 713 HART SENATE OFFICE BUILDING WASHINGTON DC 20510
+    phone: 202-224-2315
+    fax: 202-228-6321
+    contact_form: http://www.brown.senate.gov/contact/
+    office: 713 Hart Senate Office Building
+  - type: sen
+    start: '2013-01-03'
+    end: '2019-01-03'
+    state: OH
+    party: Democrat
+    class: 1
+    url: http://www.brown.senate.gov
+    address: 713 Hart Senate Office Building Washington DC 20510
+    phone: 202-224-2315
+    fax: 202-228-6321
+    contact_form: http://www.brown.senate.gov/contact
+    office: 713 Hart Senate Office Building
+    state_rank: senior
+    rss_url: http://www.brown.senate.gov/rss/feeds/?type=all&amp;
+- id:
+    bioguide: C000127
+    thomas: '00172'
+    lis: S275
+    govtrack: 300018
+    opensecrets: N00007836
+    votesmart: 27122
+    fec:
+    - S8WA00194
+    - H2WA01054
+    cspan: 26137
+    wikipedia: Maria Cantwell
+    house_history: 10608
+    ballotpedia: Maria Cantwell
+    maplight: 544
+    washington_post: gIQAZxKkDP
+    icpsr: 39310
+  name:
+    first: Maria
+    last: Cantwell
+    official_full: Maria Cantwell
+  bio:
+    birthday: '1958-10-13'
+    gender: F
+    religion: Roman Catholic
+  terms:
+  - type: rep
+    start: '1993-01-05'
+    end: '1994-12-01'
+    state: WA
+    district: 1
+    party: Democrat
+  - type: sen
+    start: '2001-01-03'
+    end: '2006-12-09'
+    state: WA
+    class: 1
+    party: Democrat
+    url: http://cantwell.senate.gov
+  - type: sen
+    start: '2007-01-04'
+    end: '2013-01-03'
+    state: WA
+    class: 1
+    party: Democrat
+    url: http://cantwell.senate.gov
+    address: 311 HART SENATE OFFICE BUILDING WASHINGTON DC 20510
+    phone: 202-224-3441
+    fax: 202-228-0514
+    contact_form: http://www.cantwell.senate.gov/contact/
+    office: 311 Hart Senate Office Building
+  - type: sen
+    start: '2013-01-03'
+    end: '2019-01-03'
+    state: WA
+    party: Democrat
+    class: 1
+    url: http://www.cantwell.senate.gov
+    address: 511 Hart Senate Office Building Washington DC 20510
+    phone: 202-224-3441
+    fax: 202-228-0514
+    contact_form: http://www.cantwell.senate.gov/public/index.cfm/email-maria
+    office: 511 Hart Senate Office Building
+    state_rank: junior
+    rss_url: http://www.cantwell.senate.gov/public/index.cfm/rss/feed
+    cspan: 4004
+    wikipedia: Ben Cardin
+- id:
+    bioguide: M001183
+    thomas: '01983'
+    lis: S338
+    govtrack: 412391
+    opensecrets: N00032838
+    votesmart: 7547
+    fec:
+    - S0WV00090
+    cspan: 62864
+    wikipedia: Joe Manchin
+    ballotpedia: Joe Manchin III
+    maplight: 1372
+    washington_post: gIQA82bVBP
+    icpsr: 40915
+  name:
+    first: Joe
+    last: Manchin
+    suffix: III
+    official_full: Joe Manchin, III
+  bio:
+    birthday: '1947-08-24'
+    gender: M
+  terms:
+  - type: sen
+    start: '2010-11-15'
+    end: '2013-01-03'
+    state: WV
+    class: 1
+    party: Democrat
+    url: http://manchin.senate.gov/
+    address: 303 HART SENATE OFFICE BUILDING WASHINGTON DC 20510
+    phone: 202-224-3954
+    contact_form: http://www.manchin.senate.gov/contact_form.cfm
+    office: 303 Hart Senate Office Building
+  - type: sen
+    start: '2013-01-03'
+    end: '2019-01-03'
+    state: WV
+    party: Democrat
+    class: 1
+    url: http://www.manchin.senate.gov
+    address: 306 Hart Senate Office Building Washington DC 20510
+    phone: 202-224-3954
+    contact_form: http://www.manchin.senate.gov/public/index.cfm/contact-form
+    office: 306 Hart Senate Office Building
+    state_rank: senior
+    rss_url: http://www.manchin.senate.gov/public/index.cfm/rss/feed
+    fax: 202-228-0002
+- id:
+    bioguide: B001267
+    thomas: '01965'
+    lis: S330
+    govtrack: 412330
+    opensecrets: N00030608
+    votesmart: 110942
+    fec:
+    - S0CO00211
+    cspan: 1031622
+    wikipedia: Michael Bennet
+    ballotpedia: Michael Bennet
+    maplight: 1092
+    washington_post: gIQA8vao9O
+    icpsr: 40910
+  name:
+    first: Michael
+    middle: F.
+    last: Bennet
+    official_full: Michael F. Bennet
+  bio:
+    gender: M
+    birthday: '1964-11-28'
+  terms:
+  - type: sen
+    start: '2009-01-22'
+    end: '2010-12-22'
+    state: CO
+    class: 3
+    party: Democrat
+    url: http://bennet.senate.gov/
+  - type: sen
+    start: '2011-01-05'
+    end: '2017-01-03'
+    state: CO
+    class: 3
+    party: Democrat
+    url: http://www.bennet.senate.gov
+    address: 261 Russell Senate Office Building Washington DC 20510
+    phone: 202-224-5852
+    fax: 202-228-5036
+    contact_form: http://www.bennet.senate.gov/contact/email
+    office: 261 Russell Senate Office Building
+    state_rank: senior
+    rss_url: http://www.bennet.senate.gov/rss/feeds/?type=news
+- id:
+    bioguide: B001230
+    thomas: '01558'
+    lis: S354
+    govtrack: 400013
+    opensecrets: N00004367
+    votesmart: 3470
+    fec:
+    - H8WI00018
+    - S2WI00219
+    cspan: 57884
+    wikipedia: Tammy Baldwin
+    house_history: 10361
+    ballotpedia: Tammy Baldwin
+    maplight: 136
+    washington_post: gIQAgHwPAP
+    icpsr: 29940
+  name:
+    first: Tammy
+    last: Baldwin
+    official_full: Tammy Baldwin
+  bio:
+    birthday: '1962-02-11'
+    gender: F
+  terms:
+  - type: rep
+    start: '1999-01-06'
+    end: '2000-12-15'
+    state: WI
+    district: 2
+    party: Democrat
+  - type: rep
+    start: '2001-01-03'
+    end: '2002-11-22'
+    state: WI
+    district: 2
+    party: Democrat
+  - type: rep
+    start: '2003-01-07'
+    end: '2004-12-09'
+    state: WI
+    district: 2
+    party: Democrat
+    url: http://tammybaldwin.house.gov
+  - type: rep
+    start: '2005-01-04'
+    end: '2006-12-09'
+    state: WI
+    district: 2
+    party: Democrat
+    url: http://tammybaldwin.house.gov
+  - type: rep
+    start: '2007-01-04'
+    end: '2009-01-03'
+    state: WI
+    district: 2
+    party: Democrat
+    url: http://tammybaldwin.house.gov
+  - type: rep
+    start: '2009-01-06'
+    end: '2010-12-22'
+    state: WI
+    district: 2
+    party: Democrat
+    url: http://tammybaldwin.house.gov
+  - type: rep
+    start: '2011-01-05'
+    end: '2013-01-03'
+    state: WI
+    district: 2
+    party: Democrat
+    url: http://tammybaldwin.house.gov
+    address: 2446 Rayburn HOB; Washington DC 20515-4902
+    phone: 202-225-2906
+    fax: 202-225-6942
+    contact_form: http://www.house.gov/formbaldwin/IMA/get_address.htm
+    office: 2446 Rayburn House Office Building
+  - type: sen
+    start: '2013-01-03'
+    end: '2019-01-03'
+    state: WI
+    party: Democrat
+    class: 1
+    url: http://www.baldwin.senate.gov
+    address: 717 Hart Washington DC 20510
+    phone: 202-224-5653
+    fax: 202-225-6942
+    contact_form: http://www.baldwin.senate.gov/contact
+    office: 717 Hart
+    state_rank: junior
+    rss_url: http://www.baldwin.senate.gov/rss/feeds/?type=all

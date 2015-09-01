@@ -1,7 +1,7 @@
-(ns cascalog-play.bill-job-test
+(ns cascalog-play.bill.bill-job-test
   (:use midje.sweet)
   (:use midje.cascalog)
-  (:require [cascalog-play.bill-jobs :as jobs]))
+  (:require [cascalog-play.bill.bill-jobs :as jobs]))
 
 (facts "Given a bills directory, When specifying the bill type (e.g :sres for senate resolution), Then return only those bills"
   (jobs/retrieve-bills-at "dev-resources/bills/" :sres) => (produces [["sres9-114" "sres" "114" "2015-01-06" "2015-08-22T06:49:28-04:00"
