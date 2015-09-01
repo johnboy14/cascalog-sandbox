@@ -3,7 +3,8 @@
   (:require [cheshire.core :as ch]
             [cascalog.logic.ops :as c]
             [cascalog.logic.def :as def]
-            [cascalog.logic.vars :as v]))
+            [cascalog.logic.vars :as v]
+            [cascalog.more-taps :as taps]))
 
 
 (defn parse-json [json]
@@ -15,56 +16,60 @@
 (defn get-nested-field [fields map]
   (mapv #(% map) fields))
 
-(defn get-file-pattern-by-type [type]
+(defn get-file-pattern-by-type2 [type]
   (case type
-    (:hr)  "*_hr_*data1.json"
-    (:hres) "*_hres_*data1.json"
-    (:hjres) "*_hjres_*data1.json"
-    (:hconres) "*_hconres_*data1.json"
-    (:sres) "*_sres_*data1.json"
-    (:sjres) "*_sjres_*data1.json"
-    (:sconres) "*_sconres_*data1.json"
-    (:s) "*_s_*data1.json"
-    "*data1.json"))
+    (:hr)  "/hr/*/data.json"
+    (:hres) "/hres/*/data.json"
+    (:hjres) "/hjres/*/data.json"
+    (:hconres) "/hconres/*/data.json"
+    (:sres) "/sres/*/data.json"
+    (:sjres) "/sjres/*/data.json"
+    (:sconres) "/sconres/*/data.json"
+    (:s) "/s/*/data.json"
+    (:all) "/*/*/data.json"))
 
-(defn file-textline [dir pattern]
-  (let [source (lfs-textline dir :source-pattern (get-file-pattern-by-type pattern))]
-    (<- [?line]
-        (source ?line))))
+(defn- byte-writable-to-str [bw]
+  "convert byte writable to stirng"
+  [(apply str (map char (. bw (getBytes))))])
 
 (defn retrieve-bills-at [dir type]
-  (let [text-tap (file-textline dir type)]
-    (<- [?bill-id ?bill-type ?congress ?introduced-date ?updated_at ?sponsor_name ?sponsor_thomas_id ?official_title ?status ?subjects_top_term]
-        (text-tap ?line)
-        (parse-json ?line :> ?bill-id ?bill-type ?congress ?introduced-date ?updated_at ?sponsor ?official_title ?status ?subjects_top_term)
-        (get-nested-field [:name :thomas_id] ?sponsor  :> ?sponsor_name ?sponsor_thomas_id))))
+  (<- [?bill-id ?bill-type ?congress ?introduced-date ?updated_at ?sponsor_name ?sponsor_thomas_id ?official_title ?status ?subjects_top_term]
+      ((taps/hfs-wholefile dir
+                           :source-pattern (get-file-pattern-by-type2 type)) ?filename ?file-content)
+      (byte-writable-to-str ?file-content :> ?line)
+      (parse-json ?line :> ?bill-id ?bill-type ?congress ?introduced-date ?updated_at ?sponsor ?official_title ?status ?subjects_top_term)
+      (get-nested-field [:name :thomas_id] ?sponsor  :> ?sponsor_name ?sponsor_thomas_id)))
 
 (defn retrieve-bill-summaries-at [dir type]
-  (let [text-tap (file-textline dir type)]
     (<- [?bill_id ?summary_text]
-        (text-tap ?line)
+        ((taps/hfs-wholefile dir
+                             :source-pattern (get-file-pattern-by-type2 type)) ?filename ?file-content)
+        (byte-writable-to-str ?file-content :> ?line)
         (parse-json-with ?line [:bill_id :summary] :> ?bill_id ?summary)
-        (get-nested-field [:text] ?summary :> ?summary_text))))
+        (get-nested-field [:text] ?summary :> ?summary_text)))
 
 (defn retrieve-bill-subject-terms-at [dir type]
-  (let [text-tap (file-textline dir type)]
     (<- [?bill_id ?term]
-        (text-tap ?line)
+        ((taps/hfs-wholefile dir
+                             :source-pattern (get-file-pattern-by-type2 type)) ?filename ?file-content)
+        (byte-writable-to-str ?file-content :> ?line)
         (parse-json-with ?line [:bill_id :subjects] :> ?bill_id ?subjects)
-        ((mapcatop identity) ?subjects :> ?term))))
+        ((mapcatop identity) ?subjects :> ?term)))
 
 (defn retrieve-bill-cosponsor-relationships-at [dir type]
-  (let [text-tap (file-textline dir type)]
     (<- [?bill_id ?name ?sponsored_at ?state ?thomas_id]
-        (text-tap ?line)
+        ((taps/hfs-wholefile dir
+                             :source-pattern (get-file-pattern-by-type2 type)) ?filename ?file-content)
+        (byte-writable-to-str ?file-content :> ?line)
         (parse-json-with ?line [:bill_id :cosponsors] :> ?bill_id ?cosponsors)
         ((mapcatop identity) ?cosponsors :> ?sponsor)
-        (get-nested-field [:name :sponsored_at :state :thomas_id] ?sponsor :> ?name ?sponsored_at ?state ?thomas_id))))
+        (get-nested-field [:name :sponsored_at :state :thomas_id] ?sponsor :> ?name ?sponsored_at ?state ?thomas_id)))
 
 (defn retrieve-bill-actions-at [dir type]
-  (let [text-tap (file-textline dir type)]
     (<- [?bill_id ?acted_at ?text]
-        (text-tap ?line)
+        ((taps/hfs-wholefile dir
+                             :source-pattern (get-file-pattern-by-type2 type)) ?filename ?file-content)
+        (byte-writable-to-str ?file-content :> ?line)
         (parse-json-with ?line [:bill_id :actions] :> ?bill_id ?actions)
         ((mapcatop identity) ?actions :> ?action)
-        (get-nested-field [:acted_at :text] ?action :> ?acted_at ?text))))
+        (get-nested-field [:acted_at :text] ?action :> ?acted_at ?text)))
