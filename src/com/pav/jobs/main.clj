@@ -1,6 +1,6 @@
-(ns cascalog-play.main
+(ns com.pav.jobs.main
   (:use cascalog.api)
-  (:require [cascalog-play.bill.bill-jobs :as bills])
+  (:require [com.pav.jobs.bill.bill-jobs :as bills])
   (:gen-class))
 
 (defmain BillDetailsJob [input output]

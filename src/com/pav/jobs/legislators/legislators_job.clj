@@ -1,7 +1,7 @@
-(ns cascalog-play.legislators.legislators-job
+(ns com.pav.jobs.legislators.legislators-job
   (:use cascalog.api)
   (:require [cascalog.more-taps :as taps]
-            [cascalog-play.utils.utils :refer [byte-writable-to-str get-nested-field]]
+            [com.pav.jobs.utils.utils :refer [byte-writable-to-str get-nested-field]]
             [clj-yaml.core :as yaml])
   (:gen-class))
 

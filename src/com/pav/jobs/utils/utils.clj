@@ -1,4 +1,4 @@
-(ns cascalog-play.utils.utils
+(ns com.pav.jobs.utils.utils
   (:require [clojure.string :as string])
   (:gen-class))
 

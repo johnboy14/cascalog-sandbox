@@ -1,7 +1,7 @@
-(ns cascalog-play.legislators.legislators-job-test
+(ns com.pav.jobs.legislators.legislators-job-test
   (:use midje.sweet)
   (:use midje.cascalog)
-  (:require [cascalog-play.legislators.legislators-job :as jobs]))
+  (:require [com.pav.jobs.legislators.legislators-job :as jobs]))
 
 (facts "Given a legislator file location, then verify the following query types"
        (jobs/retrieve-legislators-at "dev-resources/legislators/legislators-current.yaml")
