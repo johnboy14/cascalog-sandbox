@@ -4,7 +4,8 @@
             [cascalog.logic.ops :as c]
             [cascalog.logic.def :as def]
             [cascalog.logic.vars :as v]
-            [cascalog.more-taps :as taps]))
+            [cascalog.more-taps :as taps])
+  (:gen-class))
 
 
 (defn parse-json [json]
@@ -73,3 +74,8 @@
         (parse-json-with ?line [:bill_id :actions] :> ?bill_id ?actions)
         ((mapcatop identity) ?actions :> ?action)
         (get-nested-field [:acted_at :text] ?action :> ?acted_at ?text)))
+
+(defn run-bill-detail-job [input output]
+  (println "IN")
+  (?- (taps/hfs-delimited output :sinkmode :replace :delimiter ",")
+      (retrieve-bills-at input :all)))

@@ -2,7 +2,8 @@
   (:use cascalog.api)
   (:require [cascalog.more-taps :as taps]
             [cascalog-play.utils.utils :refer [byte-writable-to-str get-nested-field]]
-            [clj-yaml.core :as yaml]))
+            [clj-yaml.core :as yaml])
+  (:gen-class))
 
 (defmapcatop parse-legislator-yaml [legislators]
   (yaml/parse-string legislators))

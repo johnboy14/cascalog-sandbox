@@ -1,5 +1,6 @@
 (ns cascalog-play.utils.utils
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as string])
+  (:gen-class))
 
 (defn byte-writable-to-str [bw]
   "convert byte writable to stirng"
